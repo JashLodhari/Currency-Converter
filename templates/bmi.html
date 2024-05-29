@@ -1,0 +1,124 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multipurpose Converter</title>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+    button{
+        background:#1E90FF;
+      }
+      nav ul li a:hover{
+        color: 	#1E90FF;
+    }
+</style>
+<style>@media only screen and (max-width: 700px){
+    .logo{
+        margin-top: 20px;
+  
+    }
+    nav ul{
+        width: 100%;
+        background:  #1E90FF;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        z-index: 2;
+    }
+  }</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+            <ul id="menuList">
+                <li><a href="/">Home</a></li>
+                <li><a href="/unitconverter">Unit Converter</a></li>
+                <li><a href="/currencyconverter">Currency Converter</a></li>
+                <li><a href="/studentcorner">Student Corner</a></li>
+                <li><a href="/library">Library</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="row-l">
+        <div class="col-l">
+    <form name="BMICalculator">
+        <div class="col-l">
+           </div>  
+           <div class="col-l"> 
+                <p class="title">Weight</p> 
+                <input type="number" name="weight" placeholder="Enter Weight (kg)" size="20" required="required">
+            </div>
+            <br>
+            <div class="col-l">
+                <p class="title">Height</p>
+                <input type="number" name="height" placeholder="Enter Height (Meters)" size="20" required="required">
+            </div>
+            <div class="col-l">
+            <br>
+              <button type="button" value="Calculate BMI" onClick="calculateBmi()">Calculate BMI</button>
+                <br>
+                <br>
+              <input type="text" name="bmi" placeholder="Your BMI Will be here" size="20">
+                <br>
+                <br>
+              <input type="text" name="meaning" placeholder="--Comments--" size="35">
+                <br>
+                <br>
+              <button type="reset" value="Reset">Reset</button>
+            </div>
+        
+    </form>
+        <script>
+        function calculateBmi() {
+        var weight = document.BMICalculator.weight.value
+        var height = document.BMICalculator.height.value
+        if(weight > 0 && height > 0){	
+        var finalBmi = weight/(height*height)
+        document.BMICalculator.bmi.value = finalBmi.toFixed(3);
+        if(finalBmi < 18.5){
+        document.BMICalculator.meaning.value = "You are unhealthy, too thin."
+            }
+        if(finalBmi > 18.5 && finalBmi < 25){
+        document.BMICalculator.meaning.value = "You are healthy enough."
+            }
+        if(finalBmi > 25 &&  finalBmi <30){
+        document.BMICalculator.meaning.value = "You have overweight."
+            }
+        if(finalBmi > 30){
+        document.BMICalculator.meaning.value = "Your condition is serious."
+            }
+            }
+            else{
+            alert("Data you've entered might be incorrect. Please check and try again.")
+            }
+        
+            }
+        </script>
+</div>
+<script>
+
+    var menuList = document.getElementById("menuList");
+    
+    menuList.style.maxHeight = "0px";
+
+    function togglemenu(){
+    
+        if(menuList.style.maxHeight == "0px")
+        {
+            menuList.style.maxHeight = "190px";
+        }
+        else
+        {
+            menuList.style.maxHeight = "0px";
+        }
+    }
+
+</script>
+</body>
+</html>

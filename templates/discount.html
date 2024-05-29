@@ -1,0 +1,108 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multipurpose Converter</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+    button{
+        background:#1E90FF;
+      }
+      nav ul li a:hover{
+        color: 	#1E90FF;
+    }
+</style>
+<style>@media only screen and (max-width: 700px){
+    .logo{
+        margin-top: 20px;
+  
+    }
+    nav ul{
+        width: 100%;
+        background:  #1E90FF;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        z-index: 2;
+    }
+  }</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+            <ul id="menuList">
+                <li><a href="/">Home</a></li>
+                <li><a href="/unitconverter">Unit Converter</a></li>
+                <li><a href="/currencyconverter">Currency Converter</a></li>
+                <li><a href="/studentcorner">Student Corner</a></li>
+                <li><a href="/library">Library</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="row-l">
+        <div class="col-l">
+    <form name="discountCalculator" >
+        </div>  
+        <div class="col-l">
+            <p class="title">Price</p>  
+            <input type="number" name="price" id="price" placeholder="Price" required="required" />  
+        </div>  
+        <br>
+        <div class="col-l">
+            <p class="title">Discount</p>  
+            <input type="number" name="discount" id="discount" placeholder="Discount" required="required" />  
+        </div>  
+        <br>
+        <div class="col-l">
+            <p class="title">After Discount</p>  
+            <input name="after discount" id="afterDiscount" readonly>  
+        </div>  
+        <div class="col-l">
+        <button type="button" value="Calculate" onclick="calculate()">Calculate</button>
+      </div>  
+    </form>
+    </div>
+    <script>
+    function calculate() {
+       var price=0, discount=0, afterDiscount=0;
+        price = Number(document.discountCalculator.price.value);
+        discount = Number(document.discountCalculator.discount.value);
+    
+       afterDiscount=price - ( price*discount/100 );
+       if(afterDiscount<0)
+       {
+           Window.print("Please enter valid amount");
+       }
+    
+       document.discountCalculator.price.value=price.toFixed(2);
+       document.discountCalculator.discount.value=discount.toFixed(2);
+       document.discountCalculator.afterDiscount.value=afterDiscount.toFixed(2); 
+    }
+    </script>
+</div>
+<script>
+
+    var menuList = document.getElementById("menuList");
+    
+    menuList.style.maxHeight = "0px";
+
+    function togglemenu(){
+    
+        if(menuList.style.maxHeight == "0px")
+        { 
+            menuList.style.maxHeight = "190px";
+        }
+        else
+        {
+            menuList.style.maxHeight = "0px";
+        }
+    }
+
+</script>
+</body>
+</html>

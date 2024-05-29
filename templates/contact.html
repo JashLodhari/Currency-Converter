@@ -1,0 +1,97 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multipurpose Converter | Contact</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" href="style.css">
+<style>
+    button{
+        background:#1E90FF;
+      }
+      nav ul li a:hover{
+        color: 	#1E90FF;
+    }
+</style>
+<style>@media only screen and (max-width: 700px){
+    .logo{
+        margin-top: 20px;
+  
+    }
+    nav ul{
+        width: 100%;
+        background:  #1E90FF;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        z-index: 2;
+    }
+  }</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+            <ul id="menuList">
+                <li><a href="/">Home</a></li>
+                <li><a href="/unitconverter">Unit Converter</a></li>
+                <li><a href="/currencyconverter">Currency Converter</a></li>
+                <li><a href="/studentcorner">Student Corner</a></li>
+                <li><a href="/library">Library</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0 " role="alert">
+{{ message }}
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+ {% endfor %}
+{% endif %}
+    <div class="form"> 
+        <form method="post" action='/contact'>
+            {% csrf_token %} 
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Your name..">
+            
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Your last name..">
+            
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="Your Email..">
+
+                <label for="subject">Subject</label>
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                
+                <button type="submit" value="Submit">Submit</button> 
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</div>
+<script>
+
+    var menuList = document.getElementById("menuList");
+    
+    menuList.style.maxHeight = "0px";
+
+    function togglemenu(){
+    
+        if(menuList.style.maxHeight == "0px")
+        {
+            menuList.style.maxHeight = "220px";
+        }
+        else
+        {
+            menuList.style.maxHeight = "0px";
+        }
+    }
+
+</script>
+</body>
+</html>

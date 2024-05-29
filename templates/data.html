@@ -1,0 +1,163 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multipurpose Converter</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>  nav ul li a:hover{
+  color: 	#1E90FF;
+}@media only screen and (max-width: 700px){
+  .logo{
+      margin-top: 20px;
+
+  }
+  nav ul{
+      width: 100%;
+      background:  #1E90FF;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      z-index: 2;
+  }
+}</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+          <ul id="menuList">
+            <li><a href="/">Home</a></li>
+            <li><a href="/unitconverter">Unit Converter</a></li>
+            <li><a href="/currencyconverter">Currency Converter</a></li>
+            <li><a href="/studentcorner">Student Corner</a></li>
+            <li><a href="/library">Library</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="row-l">
+        <div class="col-l">
+        <label>Kilobyte</label>
+          <br>
+          <input id="inputKilobyte" class="w3-input w3-border" type="number" placeholder="Kilobyte" oninput="dataConverter(this.id,this.value)" onchange="dataConverter(this.id,this.value)">
+        </div>
+
+        <br>
+        <div class="col-l">
+          <label>Megabyte</label>
+          <br>
+          <input id="inputMegabyte" class="w3-input w3-border" type="number" placeholder="Megabyte" oninput="dataConverter(this.id,this.value)" onchange="dataConverter(this.id,this.value)">
+        </div>
+        <br>
+    
+        <div class="col-l">
+          <label>Gigabyte</label>
+          <br>
+          <input id="inputGigabyte" class="w3-input w3-border" type="number" placeholder="Gigabyte" oninput="dataConverter(this.id,this.value)" onchange="dataConverter(this.id,this.value)">
+        </div>
+        <br>
+       
+        <div class="col-l">
+          <label>Terabyte</label>
+          <br>
+          <input id="inputTerabyte" class="w3-input w3-border" type="number" placeholder="Terabyte" oninput="dataConverter(this.id,this.value)" onchange="dataConverter(this.id,this.value)">
+        </div>
+        <br>
+
+        <div class="col-l">
+          <label>Petabyte</label>
+          <br>
+          <input id="inputPetabyte" class="w3-input w3-border" type="number" placeholder="Petabyte" oninput="dataConverter(this.id,this.value)" onchange="dataConverter(this.id,this.value)">
+        </div>
+        </div>
+     
+      <script>
+      function dataConverter(source,valNum) {
+        valNum = parseFloat(valNum);
+        var inputKilobyte = document.getElementById("inputKilobyte");
+      
+        var inputMegabyte = document.getElementById("inputMegabyte");
+       
+        var inputGigabyte = document.getElementById("inputGigabyte");
+      
+        var inputTerabyte = document.getElementById("inputTerabyte");
+       
+        var inputPetabyte = document.getElementById("inputPetabyte");
+     
+        if (source=="inputKilobyte") {
+          inputMegabyte.value=(valNum/1000).toFixed(3);
+      
+          inputGigabyte.value=(valNum/1e+6).toFixed(3);
+        
+          inputTerabyte.value=(valNum/1e+9).toFixed(3);    
+            
+   +       inputPetabyte.value=(valNum/1e+12).toFixed(3);    
+             
+        }
+        if (source=="inputMegabyte") {
+          inputKilobyte.value=(valNum*1000).toFixed(3);
+         
+          inputGigabyte.value=(valNum/1000).toFixed(3);
+       
+          inputTerabyte.value=(valNum/1e+6).toFixed(3);    
+           
+          inputPetabyte.value=(valNum/1e+9).toFixed(3);    
+           
+        }
+        if (source=="inputGigabyte") {
+          inputKilobyte.value=(valNum*1e+6).toFixed(3);
+
+          inputMegabyte.value=(valNum*1000).toFixed(3);
+         
+          inputTerabyte.value=(valNum/1000).toFixed(3);    
+             
+          inputPetabyte.value=(valNum/1e+6).toFixed(3);    
+           
+        }
+        if (source=="inputTerabyte") {
+          inputKilobyte.value=(valNum*1e+9).toFixed(3);
+      
+          inputMegabyte.value=(valNum*1e+6).toFixed(3);
+       
+          inputGigabyte.value=(valNum*1000).toFixed(3);   
+            
+          inputPetabyte.value=(valNum/1000).toFixed(3);    
+         
+        }
+        if (source=="inputPetabyte") {
+          inputKilobyte.value=(valNum*1e+12).toFixed(3);
+     
+          inputMegabyte.value=(valNum*1e+9).toFixed(3);
+         
+          inputGigabyte.value=(valNum*1e+6).toFixed(3);
+          
+          inputTerabyte.value=(valNum*1000).toFixed(3);        
+
+      }
+    }
+      </script>
+</div>
+<script>
+
+    var menuList = document.getElementById("menuList");
+    
+    menuList.style.maxHeight = "0px";
+
+    function togglemenu(){
+    
+        if(menuList.style.maxHeight == "0px")
+        {
+          menuList.style.maxHeight = "190px";
+        }
+        else
+        {
+            menuList.style.maxHeight = "0px";
+        }
+    }
+
+</script>
+</body>
+</html>

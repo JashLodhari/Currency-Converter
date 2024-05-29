@@ -1,0 +1,418 @@
+/*Home page and navbar*/
+*{
+	margin: 0;
+	padding: 0;
+	font-family : sans-serif;
+}
+.conatiner{
+	width: 100%;
+	min-height: 100vh;
+	padding-left: 8%;
+	padding-right: 8%;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.navbar{
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+.logo{
+	width: 50px;
+	margin: 30px;
+}
+.menu-icon{
+	width: 25px;
+	cursor: pointer;
+	display: none;
+}
+nav{
+	flex: 1;
+	text-align: right;
+}
+nav ul li{
+	margin-top: 10px;
+	list-style: none;
+	display: inline-block;
+	margin-right: 30px;
+}
+nav ul li a{
+	text-decoration: none;
+	color: #000;
+	font-size: 14px;
+}
+nav ul li a:hover{
+	color: #fc0000;
+}
+.row{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 100px 0;
+}
+.col-1{
+	flex-basis: 40%;
+	position: relative;
+	margin-left: 50px;
+}
+.col-1 h2{
+	font-size: 50px;
+}
+.col-1 h3{
+	font-size: 30px;
+	color: #707070;
+	font-weight: 100;
+	margin: 20px 0 10px;
+}
+.col-1 p{
+	font-size: 16px;
+	color: #b7b7b7;
+	font-weight: 100;
+}
+.col-1 h4{
+	margin: 30px 0;
+	font-size: 20px;
+}
+button{
+	width: 140px;
+	border: 0;
+	padding: 12px 10px;
+	outline: none;
+	color: #fff;
+	background:  #ff0000;
+	border-radius: 6px;
+	cursor: pointer;
+	box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.3);
+}
+button img{
+	width: 30px;
+	display: none;
+}
+button:hover img{
+	display: block;
+}
+.col-1::after{
+	content: '';
+	width: 10px;
+	height: 57%;
+	background: #ff0000;
+	position: absolute;
+	left: -40px;
+	top: 8px;
+}
+.col-2{
+	position: relative;
+	flex-basis: 60%;
+	display: flex;
+	align-items: center;
+}
+.col-2 .controller{
+	width: 90%;
+}
+.color-box{
+	position: absolute;
+	right: 0;
+	top: 0;
+	background:   #ff0000;
+	border-radius: 20px 0 0 20px;
+	height: 100%;
+	width: 80%;
+	z-index: -1;
+	transform: translateX(150px);
+}
+.animal p{
+	width: 100%;
+	color: #fff;
+	font-size: 30px;
+}
+.news{
+	width: 100%;
+	font-size: 20px;
+}
+/*Contact Page*/
+input[type=text], select, textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
+  }
+  
+  input[type=submit] {
+	margin-top: 10px;
+	background:  #ff0000;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+	background-color:  #ff0000;
+  }
+  
+  .form {
+	margin-top: 20px;
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+  }
+  .form button{
+	  margin-top: 5px;
+  }
+  
+ /*About page*/
+.about-row::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.about-column{
+	float: left;
+	width: 18%;
+	margin-top: 30px;
+	padding: 0px 10px;
+}
+.card{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+    background-color: #f1f1f1;
+}
+.card img{
+	border-radius: 10px;
+	width: 100%;
+}  
+.card button{
+	margin-top: 5px;
+	width: 60%;
+	border-radius: 10px;
+}
+.card h3{
+	margin-top: 5px;
+	width: 100%;
+	color: #2c2a2a;
+	font-size: 20px;
+}
+.card h2{
+	width: 100%;
+	margin-top: 2px;
+	font-size: 15px;
+	color: #707070;
+}
+.about p{
+	margin-top: 30px;
+	width: 100%;
+}
+
+/*Unit Converter Page*/
+.row-uc::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.column-uc{
+	float: left;
+	width: 15%;
+	margin-top: 30px;
+	padding: 0px 10px;
+}
+.card-uc{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+	padding: 10px;
+	text-align: center;
+	border-radius: 20px;
+    background-color: #f1f1f1;
+}
+.card-uc img{
+	border-radius: 20px;
+	width: 100%;
+	opacity: 0.7;
+}
+.card-uc h3{
+	margin-top: 10px;
+	color: rgb(61, 60, 59);
+}
+.card-uc img:hover{
+	opacity: 1.0;
+}
+.card-uc h3:hover{
+	color: #ff0000;
+}
+
+/* Converters */
+
+.row-l{
+	box-shadow: 0 12px 20px 0 rgba(39, 39, 39, 0.788);
+	width: 40%;
+	text-align: center;
+	margin-left: auto;
+	border-radius: 10px;
+	margin-right: auto;
+	border: 1px inset #58585856;
+}
+.col-l{
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	padding: 7px;
+}
+.col-l label{
+	width: 100%;
+	font-size: 15px;
+}
+.col-l input{
+	width: 50%;
+	height: 25px;
+
+}
+.age{
+	margin-top: 10px;
+	font-size: 20px;
+}
+
+/*currency converter*/
+
+.heading {
+	margin: 35px auto 20px;
+}
+
+.main {
+	margin-top: 20px;
+	width: 35%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	border-radius: 5px;
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+	box-shadow:  0 12px 20px 0 rgba(39, 39, 39, 0.788);
+}
+
+label {
+	font-size: 20px;
+}
+
+.btn {
+	width: 30%;
+}
+
+#finalAmount {
+	display: none;
+	margin: 50px auto;
+}
+
+#finalAmount h2 {
+	text-align: center;
+	font-size: 30px;
+}
+
+@media only screen and (max-width: 700px){
+	.logo{
+		margin-top: 20px;
+
+	}
+	nav ul{
+		width: 100%;
+		background:  #ff0000;
+		position: absolute;
+		top: 75px;
+		right: 0;
+		z-index: 2;
+	}
+	nav ul li{
+		display: block;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	nav ul li a{
+		color: #fff;
+	}
+	.menu-icon{
+		display: block;
+	}
+	#menuList{
+		overflow: hidden;
+		transition: 0.5s;
+	}
+	.row{
+		flex-direction: column-reverse;
+		margin: 50px 0;
+	}
+	.col-2{
+		flex-basis: 100%;
+		margin-bottom: 50px;
+	}
+	.col-2 .controller{
+		width: 77%;
+	}
+	.color-box{
+		transform: translateX(75px);
+	}
+	.col-1{
+		flex-basis: 100%;
+	}
+	.col-1 h2{
+		font-size: 35px;
+	}
+	.col-1 h3{
+		font-size: 15px;
+	}
+	.row-uc{
+		margin-top: -15px;
+		margin-left: 10px;
+	}
+	.about-column {
+		width: 100%;
+		display: block;
+		margin-bottom: 20px;
+	}
+	.column-uc{
+		width: 40%;
+		display: block;
+		margin-bottom: 20px;
+	}
+	.column-uc img{
+		width: 100%;
+	}
+	.row-l{
+		margin-top: 20px;
+		width: 100%;
+	}
+	.col-l{
+		width: 100%;
+	}
+	.age{
+		font-size: 15px;
+	}
+	.main {
+		margin-top: 20px;
+		width: 80%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+	}
+	.form-group{
+		margin-top: 5px;
+	}
+	.btn{
+		width: 30%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#finalAmount {
+		display: none;
+		margin: 50px auto;
+	}
+	
+	#finalAmount h2 {
+		text-align: center;
+		font-size: 20px;
+	}
+}
+	

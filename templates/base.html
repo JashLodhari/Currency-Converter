@@ -1,0 +1,176 @@
+{# yonetim/templates/base.html #}
+{% comment %} {% load render_table from django_tables2 %} {% endcomment %}
+{% load static %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multipurpose Converter | Home</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+button{
+    width:22%;
+    font-size:12px;
+    padding: 10px 10px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      nav ul li a:hover{
+        color: 	#1E90FF;
+    }
+      
+      th{
+        background:#1E90FF;
+        color:white;
+        font-size:20px;
+      }
+    td{
+        text-align: center;
+        padding: 8px;
+      }
+      button{
+        background:#1E90FF;
+      }
+      .col-1::after{
+        content: '';
+        width: 10px;
+        height: 57%;
+        background: #1E90FF;
+        position: absolute;
+        left: -40px;
+        top: 8px;
+    }
+    .color-box{
+        position: absolute;
+        right: 0;
+        top: 0;
+        background:   #1E90FF;
+        border-radius: 20px 0 0 20px;
+        height: 100%;
+        width: 80%;
+        z-index: -1;
+        transform: translateX(150px);
+    }
+      tr:nth-child(even) {background-color: #f2f2f2;}
+    }
+@media only screen and (max-width: 700px){
+    
+    button{
+        text-align:left;
+        text-align:center;
+        font-size:7px;
+        width:22%;
+    }
+}
+      
+</style>
+<style>@media only screen and (max-width: 700px){
+    .logo{
+        margin-top: 20px;
+  
+    }
+    nav ul{
+        width: 100%;
+        background:  #1E90FF;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        z-index: 2;
+    }
+    table tr,td{
+        font-size:8px;
+        width:100%;
+    }
+    table th{
+        width:100%;
+        font-size: 11px;
+    }
+  }</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+            <ul id="menuList">
+                <li><a href="/">Home</a></li>
+                <li><a href="/unitconverter">Unit Converter</a></li>
+                <li><a href="/currencyconverter">Currency Converter</a></li>
+                <li><a href="/studentcorner">Student Corner</a></li>
+                <li><a href="/library">Library</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+
+        <div class="row">
+            <div class="col-1">
+                <h2>Multipurpose Converter</h2>
+                <h3>This site is made for educational purpose. In this site we had given Unit converter and Currency converter. Such unit converters are given as below. </h3>
+                <a href="/length"><button type="submit" value="Submit">Length</button></a>
+                <a href="/area"><button type="submit" value="Submit">Area</button></a>
+                <a href="/mass"><button type="submit" value="Submit">Mass</button></a>
+                <a href="/temperature"><button type="submit" value="Submit">Temp</button></a>
+                <br>
+                <br>
+                <a href="/time"><button type="submit" value="Submit">Time</button></a>
+                <a href="/age"><button type="submit" value="Submit">Age</button></a>
+                <a href="/speed"><button type="submit" value="Submit">Speed</button></a>
+                <a href="/bmi"><button type="submit" value="Submit">BMI</button></a>
+                <br>
+                <br>
+                <a href="/data"><button type="submit" value="Submit">Data</button></a>
+                <a href="/discount"><button type="submit" value="Submit">Discount</button></a>
+                <a href="/pressure"><button type="submit" value="Submit">Pressure</button></a>
+                <a href="/weight"><button type="submit" value="Submit">Weight</button></a>
+            </div>
+            <div class="col-2">
+                <img src="/static/icon2.png" class="controller">
+                <div class="color-box"></div>
+                   <div class="animal"> <p>Save Animals</p></div>
+            </div>
+        </div>
+
+<div class="table">
+        <table>
+        <tr>
+            <th style="width:10%;">No</th>
+            <th>Description</th>
+            <th style="width:100%">Download File</th>
+        </tr>
+        {% for pdf in pdf_file %}
+        <tr>
+            <td style="width:10%;">{{pdf.No}}</td>
+            <td style=" width:60%">{{pdf.Description}}</td>
+            <td style="width:100%"><a href="media/{{pdf.File}}"><i class="fa-solid fa-file-pdf"></i></i></a></td> 
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</div>
+<script>
+
+    var menuList = document.getElementById("menuList");
+    
+    menuList.style.maxHeight = "0px";
+
+    function togglemenu(){
+    
+        if(menuList.style.maxHeight == "0px")
+        {
+            menuList.style.maxHeight = "190px";
+        }
+        else
+        {
+            menuList.style.maxHeight = "0px";
+        }
+    }
+
+</script>
+</body>
+</html>

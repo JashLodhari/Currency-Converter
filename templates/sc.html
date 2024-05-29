@@ -1,0 +1,166 @@
+{# yonetim/templates/base.html #}
+{% load render_table from django_tables2 %}
+{% load static %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>Multipurpose Converter</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+  .h1 h1{
+    font-size:30px;
+  }
+  nav ul li a:hover{
+    color: 	#1E90FF;
+}
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th{
+    background-color:#1E90FF;
+    color:white;
+    font-size:20px;
+  }
+   td {
+    text-align: center;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {background-color: #f2f2f2;}
+
+.sc h1{
+   
+  font-size:30px;
+}
+.sc h2{
+	color:rgb(65, 63, 63);
+  font-size:25px;
+}
+.sc h3{
+  color:gray;
+  font-style: italic;
+  font-size:20px;
+}
+.sc h4{
+  font-style:italic;
+  font-size:20px;
+  color: #1E90FF;
+}
+@media only screen and (max-width: 700px){
+  .sc h1{
+    font-size:25px;
+  }
+  .sc h2{
+    font-size:20px;
+  }
+  .sc h3{
+    font-size: 15px;
+  }
+  .sc h4{
+    font-size: 12px;
+  }
+  .h1 h1{
+      font-size:25px;
+  }
+  table tr,td{
+      font-size:8px;
+      width:100%;
+  }
+  table th{
+      width:100%;
+      font-size: 12px;
+  }
+}
+</style>
+<style>@media only screen and (max-width: 700px){
+  .logo{
+      margin-top: 20px;
+
+  }
+  nav ul{
+      width: 100%;
+      background: #1E90FF;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      z-index: 2;
+  }
+}</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+          <ul id="menuList">
+            <li><a href="/">Home</a></li>
+            <li><a href="/unitconverter">Unit Converter</a></li>
+            <li><a href="/currencyconverter">Currency Converter</a></li>
+            <li><a href="/studentcorner">Student Corner</a></li>
+            <li><a href="/library">Library</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="sc">
+      <h1>Important Links</h1>
+      <hr>
+      <br>
+      <h4>Alumni Membership of GP-Porbandar: <a href="https://drive.google.com/file/d/1MfWTjYmjNMzLkxX62EyBIfBzqB4JPtO6/view"> Website Link</a><br>
+      Study Materials: <a href="https://sites.google.com/view/gppstudentscorner">Website Link</a><br>
+      Student Section Forms: <a href="https://drive.google.com/drive/folders/1b707M00yn7StAW16iIqntn-ut6QkCqzD">Website Link</a><br>
+      Mukhyamantri Apprenticeship Yojana: <a href="http://portal.mhrdnats.gov.in/">Website Link</a><br>
+      AICTE and Youth4work Campain Online Exam: <a href="https://www.youth4work.com/onlinetalenttest">Website Link</a><br>
+      NSP Scholarship: <a href="http://www.gppr.cteguj.in/uploads/4668/NSP_Scholarship_Notice.pdf"> Notice</a> & <a href="https://scholarships.gov.in/">Website Link</a><br>
+      MYSY Scholarship:  <a href="https://scholarships.gov.in/">Website Link</a><br>
+      Digital Gujarat Scholarship: <a href="https://www.digitalgujarat.gov.in/CitizenNew/ScholarshipServices.aspx">Website Link</a></h4>
+      <br>
+      <hr>
+    </div>
+    <div class="h1">
+      <br>
+      <h1>Newsletter</h1>
+      <hr>
+      <br>
+      <table>
+        <tr>
+            <th style="width:10%;">No</th>
+            <th>Description</th>
+            <th style="width:100%">Download File</th>
+        </tr>
+        {% for pdf in pdf_file %}
+        <tr>
+            <td style="width:10%;">{{pdf.No}}</td>
+            <td style="width:60%">{{pdf.Description}}</td>
+            <td style="width:100%"><a href="media/{{pdf.File}}"><i class="fa-solid fa-file-pdf"></i></i></a></td> 
+        </tr>
+        {% endfor %}
+    </div>
+</div>
+    <script>
+
+      var menuList = document.getElementById("menuList");
+      
+      menuList.style.maxHeight = "0px";
+  
+      function togglemenu(){
+      
+          if(menuList.style.maxHeight == "0px")
+          {
+            menuList.style.maxHeight = "190px";
+          }
+          else
+          {
+              menuList.style.maxHeight = "0px";
+          }
+      }
+  
+  </script>
+  </body>
+  </html>

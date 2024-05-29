@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multipurpose Converter</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>  nav ul li a:hover{
+  color: 	#1E90FF;
+}
+  @media only screen and (max-width: 700px){
+  .logo{
+      margin-top: 20px;
+
+  }
+  nav ul{
+      width: 100%;
+      background:  #1E90FF;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      z-index: 2;
+  }
+}</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+          <ul id="menuList">
+            <li><a href="/">Home</a></li>
+            <li><a href="/unitconverter">Unit Converter</a></li>
+            <li><a href="/currencyconverter">Currency Converter</a></li>
+            <li><a href="/studentcorner">Student Corner</a></li>
+            <li><a href="/library">Library</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="row-l">
+        <div class="col-l">
+        <label>Tonne</label>
+         <br>
+         <input id="inputTonne" class="w3-input w3-border" type="number" placeholder="Tonne" oninput="massConverter(this.id,this.value)" onchange="massConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Kilogram</label>
+         <br>
+         <input id="inputKilogram" class="w3-input w3-border" type="number" placeholder="Kilogram" oninput="massConverter(this.id,this.value)" onchange="massConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Gram</label>
+         <br>
+         <input id="inputGram" class="w3-input w3-border" type="number" placeholder="Gram" oninput="massConverter(this.id,this.value)" onchange="massConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Miligram</label>
+         <br>
+         <input id="inputMiligram" class="w3-input w3-border" type="number" placeholder="Miligram" oninput="massConverter(this.id,this.value)" onchange="massConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Microgram</label>
+         <br>
+         <input id="inputMicrogram" class="w3-input w3-border" type="number" placeholder="Microgram" oninput="massConverter(this.id,this.value)" onchange="massConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Imperial Ton</label>
+         <br>
+         <input id="inputImperialTon" class="w3-input w3-border" type="number" placeholder="Imperial Ton" oninput="massConverter(this.id,this.value)" onchange="massConverter(this.id,this.value)">
+       </div>
+    </div>
+    
+
+     <script>
+     function massConverter(source,valNum) {
+       valNum = parseFloat(valNum);
+       var inputTonne = document.getElementById("inputTonne");
+       var inputKilogram = document.getElementById("inputKilogram");
+       var inputGram = document.getElementById("inputGram");
+       var inputMiligram = document.getElementById("inputMiligram");
+       var inputMicrogram = document.getElementById("inputMicrogram");
+       var inputImperialTon = document.getElementById("inputImperialTon");
+       if (source=="inputTonne") {
+         inputKilogram.value=(valNum*1000).toFixed();
+         inputGram.value=(valNum*1e+6).toFixed();
+         inputMiligram.value=(valNum*1e+9).toFixed();
+         inputMicrogram.value=(valNum*1e+12).toFixed();
+         inputImperialTon.value=(valNum/1.016).toFixed();    
+       }
+       if (source=="inputKilogram") {
+         inputTonne.value=(valNum/1000).toFixed(3);
+         inputGram.value=(valNum*1000).toFixed();
+         inputMiligram.value=(valNum*1e+6).toFixed();
+         inputMicrogram.value=(valNum*1e+9).toFixed();
+         inputImperialTon.value=(valNum/1016).toFixed(9); 
+       }
+       if (source=="inputGram") {
+         inputTonne.value=(valNum/1e+6).toFixed();
+         inputKilogram.value=(valNum/1000).toFixed(3);
+         inputMiligram.value=(valNum*1000).toFixed();
+         inputMicrogram.value=(valNum*1e+6).toFixed();
+         inputImperialTon.value=(valNum/1.016e+6).toFixed(6);   
+       }
+       if (source=="inputMiligram") {
+         inputTonne.value=(valNum/1e+9).toFixed();
+         inputKilogram.value=(valNum/1e+6).toFixed();
+         inputGram.value=(valNum/1000).toFixed(3);
+         inputMicrogram.value=(valNum*1000).toFixed();
+         inputImperialTon.value=(valNum/1.016e+9).toFixed(6);   
+       }
+       if (source=="inputMicrogram") {
+         inputTonne.value=(valNum/1e+12).toFixed(4);
+         inputKilogram.value=(valNum/1e+9).toFixed(4);
+         inputGram.value=(valNum/1e+6).toFixed(4);
+         inputMiligram.value=(valNum/1000).toFixed(3);
+         inputImperialTon.value=(valNum/1.016e+12).toFixed(4); 
+       }
+       if (source=="inputImperialTon") {
+         inputTonne.value=(valNum*1.016).toFixed(5);
+         inputKilogram.value=(valNum*1016).toFixed(2);
+         inputGram.value=(valNum*1.016e+6).toFixed();
+         inputMiligram.value=(valNum*1.016e+9).toFixed();
+         inputMicrogram.value=(valNum*1.016e+12).toFixed(); 
+       }
+     }
+     </script>
+</div>
+<script>
+
+    var menuList = document.getElementById("menuList");
+    
+    menuList.style.maxHeight = "0px";
+
+    function togglemenu(){
+    
+        if(menuList.style.maxHeight == "0px")
+        {
+          menuList.style.maxHeight = "190px";
+        }
+        else
+        {
+            menuList.style.maxHeight = "0px";
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multipurpose Converter</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+  nav ul li a:hover{
+    color: 	#1E90FF;
+}
+@media only screen and (max-width: 700px){
+  .logo{
+      margin-top: 20px;
+
+  }
+  nav ul{
+      width: 100%;
+      background: #1E90FF;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      z-index: 2;
+  }
+}</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+          <ul id="menuList">
+            <li><a href="/">Home</a></li>
+            <li><a href="/unitconverter">Unit Converter</a></li>
+            <li><a href="/currencyconverter">Currency Converter</a></li>
+            <li><a href="/studentcorner">Student Corner</a></li>
+            <li><a href="/library">Library</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="row-l">
+        <div class="col-l">
+        <label>Square-Feet</label>
+         <br>
+         <input id="inputSquareFeet" class="w3-input w3-border" type="number" placeholder="SquareFeet" oninput="areaConverter(this.id,this.value)" onchange="areaConverter(this.id,this.value)">
+        </div>
+       <br>
+       <div class="col-l">
+         <label>Square-Meters</label>
+         <br>
+         <input id="inputSquareMeters" class="w3-input w3-border" type="number" placeholder="SquareMeters" oninput="areaConverter(this.id,this.value)" onchange="areaConverter(this.id,this.value)">
+        </div>
+       <br>
+       <div class="col-l">
+         <label>Square-Yards</label>
+         <br>
+         <input id="inputSquareYards" class="w3-input w3-border" type="number" placeholder="SquareYards" oninput="areaConverter(this.id,this.value)" onchange="areaConverter(this.id,this.value)">
+        </div>
+       <br>
+       <div class="col-l">
+         <label>Hectares</label>
+         <br>
+         <input id="inputHectares" class="w3-input w3-border" type="number" placeholder="Hectares" oninput="areaConverter(this.id,this.value)" onchange="areaConverter(this.id,this.value)">
+        </div>
+       <br>
+       <div class="col-l">
+         <label>Bhighas</label>
+         <br>
+         <input id="inputBhighas" class="w3-input w3-border" type="number" placeholder="Bhighas" oninput="areaConverter(this.id,this.value)" onchange="areaConverter(this.id,this.value)">
+        </div>
+       <br>
+       <div class="col-l">
+         <label>Acres</label>
+         <br>
+         <input id="inputAcres" class="w3-input w3-border" type="number" placeholder="Acres" oninput="areaConverter(this.id,this.value)" onchange="areaConverter(this.id,this.value)">
+        </div>
+    </div>
+     <script>
+     function areaConverter(source,valNum) {
+       valNum = parseFloat(valNum);
+       var inputSquareFeet = document.getElementById("inputSquareFeet");
+       var inputSquareMeters = document.getElementById("inputSquareMeters");
+       var inputSquareYards = document.getElementById("inputSquareYards");
+       var inputHectares = document.getElementById("inputHectares");
+       var inputBhighas = document.getElementById("inputBhighas");
+       var inputAcres = document.getElementById("inputAcres");
+       if (source=="inputSquareFeet") {
+         inputSquareMeters.value=(valNum*0.092903).toFixed(4);
+         inputSquareYards.value=(valNum/9).toFixed(4);
+         inputHectares.value=(valNum*0.000009).toFixed(4);
+         inputBhighas.value=(valNum*0.000057).toFixed(4);
+         inputAcres.value=(valNum*0.000023).toFixed(4);    
+       }
+       if (source=="inputSquareMeters") {
+         inputSquareFeet.value=(valNum*10.757215).toFixed(4);
+         inputSquareYards.value=(valNum*1.195991).toFixed(4);
+         inputHectares.value=(valNum*0.000100).toFixed(4);
+         inputBhighas.value=(valNum*0.000618).toFixed(4);
+         inputAcres.value=(valNum*0.000247).toFixed(4);    
+       }
+       if (source=="inputSquareYards") {
+         inputSquareFeet.value=(valNum*9.000000).toFixed(4);
+         inputSquareMeters.value=(valNum*0.836127).toFixed(4);
+         inputHectares.value=(valNum*0.000084).toFixed(4);
+         inputBhighas.value=(valNum*0.000517).toFixed(4);
+         inputAcres.value=(valNum*0.000207).toFixed(4);    
+       }
+       if (source=="inputHectares") {
+         inputSquareFeet.value=(valNum*107639.150512).toFixed(4);
+         inputSquareMeters.value=(valNum*10010.315400).toFixed(4);
+         inputSquareYards.value=(valNum*11959.905612).toFixed(4);
+         inputBhighas.value=(valNum*6.177637).toFixed(4);
+         inputAcres.value=(valNum*2.471052).toFixed(4);    
+       }
+       if (source=="inputBhighas") {
+         inputSquareFeet.value=(valNum*17424.000000).toFixed(4);
+         inputSquareMeters.value=(valNum*1620.741872).toFixed(4);
+         inputSquareYards.value=(valNum*1.936000e+3).toFixed(4);
+         inputHectares.value=(valNum*0.161874).toFixed(4);
+         inputAcres.value=(valNum*0.399999).toFixed(4);    
+       }
+       if (source=="inputAcres") {
+         inputSquareFeet.value=(valNum*43560.057264).toFixed(4);
+         inputSquareMeters.value=(valNum*4046.860000).toFixed(4);
+         inputSquareYards.value=(valNum*4840.006363).toFixed(4);
+         inputHectares.value=(valNum*0.404686).toFixed(4);
+         inputBhighas.value=(valNum*2.500003).toFixed(4);
+       }
+     }
+     </script>
+</div>
+<script>
+
+    var menuList = document.getElementById("menuList");
+    
+    menuList.style.maxHeight = "0px";
+
+    function togglemenu(){
+    
+        if(menuList.style.maxHeight == "0px")
+        {
+          menuList.style.maxHeight = "190px";
+        }
+        else
+        {
+            menuList.style.maxHeight = "0px";
+        }
+    }
+
+</script>
+</body>
+</html>

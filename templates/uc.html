@@ -1,0 +1,149 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multipurpose Converter | Unit Converter</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style> 
+     
+    nav ul li a:hover{
+    color: 	#1E90FF;
+    }
+    
+    .card-uc h3:hover{
+        color: 	#1E90FF;
+    }
+    
+@media only screen and (max-width: 700px){
+    .logo{
+        margin-top: 20px;
+  
+    }
+    nav ul{
+        width: 100%;
+        background:  #1E90FF;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        z-index: 2;
+    }
+    .row-uc{
+		margin-top: -15px;
+		margin-left: 20px;
+	}
+  }</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+            <ul id="menuList">
+                <li><a href="/">Home</a></li>
+                <li><a href="/unitconverter">Unit Converter</a></li>
+                <li><a href="/currencyconverter">Currency Converter</a></li>
+                <li><a href="/studentcorner">Student Corner</a></li>
+                <li><a href="/library">Library</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="coverter">
+        <div class="row-uc">
+            <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/length"><img src="/static/length.png">
+                    <h3>Length</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/area"><img src="/static/area.png">
+                    <h3>Area</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/mass"><img src="/static/mass.png">
+                    <h3>Mass</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/temperature"><img src="/static/temperature.png">
+                    <h3>Temperature</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/time"><img src="/static/Timee.png">
+                    <h3>Time</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/age"><img src="/static/age.png">
+                    <h3>Age</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/speed"><img src="/static/speed.png">
+                    <h3>Speed</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/bmi"><img src="/static/Bmi.png">
+                    <h3>BMI</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/data"><img src="/static/data.png">
+                    <h3>Data</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/discount"><img src="/static/discount.png">
+                    <h3>Discount</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/pressure"><img src="/static/pressure.png">
+                    <h3>Pressure</h3></a>
+                </div>
+             </div>
+             <div class="column-uc">
+                <div class="card-uc">
+                    <a href="/weight"><img src="/static/weight.png">
+                    <h3>Weight</h3></a>
+                </div>
+             </div>
+        </div>
+    </div>
+<script>
+
+    var menuList = document.getElementById("menuList");
+    
+    menuList.style.maxHeight = "0px";
+
+    function togglemenu(){
+    
+        if(menuList.style.maxHeight == "0px")
+        {
+            menuList.style.maxHeight = "190px";
+        }
+        else
+        {
+            menuList.style.maxHeight = "0px";
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+{% load render_table from django_tables2 %}
+{% load static %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      th{
+        background-color:#1E90FF;
+        color:white;
+        font-size:20px;
+      } 
+      td {
+        text-align: center;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {background-color: #f2f2f2;}
+    }
+
+    .btn {
+        width:100%;
+    }
+    nav ul li a:hover{
+        color: 	#1E90FF;
+    }
+    .btn button{
+        width:20%;
+        height:5%;
+        background:#1E90FF;
+    }
+    .pagination{
+    }
+    @media only screen and (max-width: 700px){
+        .btn{
+            width:180%;
+        }
+        .btn button{
+            width:20%;
+        }
+        .pagination{
+            font-size:10px;
+        }
+        table tr,td{
+            font-size:10px;
+        }
+        table th{
+            width:2px;
+            font-size: 12px;
+        }
+    }
+</style>
+<style>@media only screen and (max-width: 700px){
+    .logo{
+        margin-top: 20px;
+  
+    }
+    nav ul{
+        width: 100%;
+        background: #1E90FF;
+        position: absolute;
+        top: 75px;
+        right: 0;
+        z-index: 2;
+    }
+    .btn {
+        margin-left:-3px;
+        width:50%; 
+        height:5%;
+    }
+    .btn button{
+        margin-top:5px;
+        width:40%;
+        height:60%;
+        text-align:center;
+        font-size:8px;
+    }
+  }</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+          <ul id="menuList">
+            <li><a href="/">Home</a></li>
+            <li><a href="/unitconverter">Unit Converter</a></li>
+            <li><a href="/currencyconverter">Currency Converter</a></li>
+            <li><a href="/studentcorner">Student Corner</a></li>
+            <li><a href="/library">Library</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="search">
+    <form class="d-flex" method="POST" action="{% url 'search' %}">
+        {% csrf_token %}
+        <div class="btn"><input  type="search" placeholder="Search" aria-label="Search" name="searched">
+       <button type="submit">Search</button></div>
+    </div>
+    <br>
+    <table>
+        <tr>
+           <th>Sr No.</th>
+           <th>Book Name</th>
+           <th>Publication</th>
+           <th style="width:9%;">Sem</th>
+           <th style="width:9%;">Edition</th>
+        </tr>
+        <tr>
+            {% for b in page_obj%}
+            {# Each "contact" is a Contact model object. #}
+            <td>{{b.Sr_no}}</td>
+            <td style="text-align:center;">{{b.Book_name}}</td>
+            <td style="text-align:center;">{{b.Publication}}</td>
+            <td>{{b.Semester}}</td>
+            <td>{{b.Edition}}</td>
+        
+                </tr>
+    {%endfor%} 
+    {% if searched %}
+    {% for v in venue%}
+                <tr> 
+                    <td>{{v.Sr_no}}</td>
+                    <td>{{v.Book_name}}</td>
+                    <td>{{v.Publication}}</td>
+                    <td>{{v.Semester}}</td>
+                    <td>{{v.Edition}}</td>
+                </tr>
+    {% endfor %}
+    {% endif %}         
+            </table>
+    <br>
+    
+    <div class="pagination" style="text-align:center; font-style:italic;">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1" style="margin-right:10px;"><i class="fa-solid fa-backward"></i></a>
+            <a href="?page={{ page_obj.previous_page_number }}" style="margin-right:10px;"><i class="fa-solid fa-square-caret-left"></i></a>
+            
+                {% endif %}
+    
+            <span class="current">
+              PAGE {{ page_obj.number }} OF {{ page_obj.paginator.num_pages }}
+            </span>
+    
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"style="margin-left:10px;"><i class="fa-solid fa-square-caret-right"></i></a>
+            <a href="?page={{ page_obj.paginator.num_pages }}"style="margin-left:10px;"><i class="fa-solid fa-forward"></i></a>
+            {% endif %}
+        </span>
+    </div>
+
+</div>
+    <script>
+
+        var menuList = document.getElementById("menuList");
+        
+        menuList.style.maxHeight = "0px";
+    
+        function togglemenu(){
+        
+            if(menuList.style.maxHeight == "0px")
+            {
+              menuList.style.maxHeight = "190px";
+            }
+            else
+            {
+                menuList.style.maxHeight = "0px";
+            }
+        }
+    
+    </script>
+    </body>
+    </html>

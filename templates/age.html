@@ -1,0 +1,124 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multipurpose Converter</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+    button{
+        background:#1E90FF;
+      }
+      nav ul li a:hover{
+        color: 	#1E90FF;
+    }
+      @media only screen and (max-width: 700px){
+        .logo{
+            margin-top: 20px;
+    
+        }
+        nav ul{
+            width: 100%;
+            background:  #1E90FF;
+            position: absolute;
+            top: 75px;
+            right: 0;
+            z-index: 2;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+            <ul id="menuList">
+                <li><a href="/">Home</a></li>
+                <li><a href="/unitconverter">Unit Converter</a></li>
+                <li><a href="/currencyconverter">Currency Converter</a></li>
+                <li><a href="/studentcorner">Student Corner</a></li>
+                <li><a href="/library">Library</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="row-l">
+        <div class="col-l">
+              <p class="title">Date</p>  
+              <input type="number" name="date" id="date" placeholder="dd" required="required" maxlength="2" />  
+          </div>  
+          <br>
+          <div class="col-l">
+              <p class="title">Month</p>  
+              <input type="number" name="month" id="month" placeholder="mm" required="required" maxlength="2" />  
+          </div>  
+          <br>
+          <div class="col-l">
+              <p class="title">Year</p>  
+              <input type="number" name="year" id="year" placeholder="yyyy" required="required" maxlength="4" />  
+          </div>  
+      <div class="col-l">
+        <div class="base">  
+         <div class="enter">  
+              <button type="submit" value="submit" onclick="age()">Calculate</button>  
+         </div>  
+        </div>  
+         <div class="age" id="age"></div>  
+        </form>  
+       </div>  
+       </div> 
+       <script>
+       function age() {  
+        var d1 = document.getElementById('date').value;  
+        var m1 = document.getElementById('month').value;  
+        var y1 = document.getElementById('year').value;  
+        var date = new Date();  
+        var d2 = date.getDate();  
+        var m2 = 1 + date.getMonth();  
+        var y2 = date.getFullYear();  
+        var month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];  
+        if(d1 > d2){  
+         d2 = d2 + month[m2 - 1];  
+         m2 = m2 - 1;  
+        }  
+        if(m1 > m2){  
+         m2 = m2 + 12;  
+         y2 = y2 - 1;  
+        }  
+        var d = d2 - d1;  
+        var m = m2 - m1;  
+        var y = y2 - y1;  
+        if(d<=0 && d<=31)
+        {
+        document.getElementById('age').innerHTML = 'please enter a valid age';    
+        }
+        else
+        {
+        document.getElementById('age').innerHTML = 'Your Age is '+y+' Years '+m+' Months '+d+' Days';  
+        }  
+    }
+       </script>
+</div>
+<script>
+
+    var menuList = document.getElementById("menuList");
+    
+    menuList.style.maxHeight = "0px";
+
+    function togglemenu(){
+    
+        if(menuList.style.maxHeight == "0px")
+        {
+            menuList.style.maxHeight = "190px";
+        }
+        else
+        {
+            menuList.style.maxHeight = "0px";
+        }
+    }
+
+</script>
+</body>
+</html>

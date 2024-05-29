@@ -1,0 +1,228 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multipurpose Converter</title>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>  nav ul li a:hover{
+  color: 	#1E90FF;
+}
+  @media only screen and (max-width: 700px){
+  .row-uc{
+		margin-top: -15px;
+	}
+}
+</style>
+<style>@media only screen and (max-width: 700px){
+  .logo{
+      margin-top: 20px;
+
+  }
+  nav ul{
+      width: 100%;
+      background:  #1E90FF;
+      position: absolute;
+      top: 75px;
+      right: 0;
+      z-index: 2;
+  }
+}</style>
+</head>
+<body>
+<div class="conatiner">
+    <div class="navbar">
+        <img src="/static/logo.png" class="logo">
+        <nav>
+        <ul id="menuList">
+          <li><a href="/">Home</a></li>
+          <li><a href="/unitconverter">Unit Converter</a></li>
+          <li><a href="/currencyconverter">Currency Converter</a></li>
+          <li><a href="/studentcorner">Student Corner</a></li>
+          <li><a href="/library">Library</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+      </ul>
+      </nav>
+      <img src="/static/menu.png" class="menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="row-l">
+        <div class="col-l">
+        <label>Nanosecond</label>
+         <br>
+         <input id="inputNanosecond" class="w3-input w3-border" type="number" placeholder="Nanosecond" oninput="timeConverter(this.id,this.value)" onchange="timeConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Microsecond</label>
+         <br>
+         <input id="inputMicrosecond" class="w3-input w3-border" type="number" placeholder="Microsecond" oninput="timeConverter(this.id,this.value)" onchange="timeConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Milisecond</label>
+         <br>
+         <input id="inputMilisecond" class="w3-input w3-border" type="number" placeholder="Milisecond" oninput="timeConverter(this.id,this.value)" onchange="timeConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Second</label>
+         <br>
+         <input id="inputSecond" class="w3-input w3-border" type="number" placeholder="Second" oninput="timeConverter(this.id,this.value)" onchange="timeConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Minute</label>
+         <br>
+         <input id="inputMinute" class="w3-input w3-border" type="number" placeholder="Minute" oninput="timeConverter(this.id,this.value)" onchange="timeConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Hour</label>
+         <br>
+         <input id="inputHour" class="w3-input w3-border" type="number" placeholder="Hour" oninput="timeConverter(this.id,this.value)" onchange="timeConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Day</label>
+         <br>
+         <input id="inputDay" class="w3-input w3-border" type="number" placeholder="Day" oninput="timeConverter(this.id,this.value)" onchange="timeConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Week</label>
+         <br>
+         <input id="inputWeek" class="w3-input w3-border" type="number" placeholder="Week" oninput="timeConverter(this.id,this.value)" onchange="timeConverter(this.id,this.value)">
+       </div>
+       <br>
+       <div class="col-l">
+         <label>Month</label>
+         <br>
+         <input id="inputMonth" class="w3-input w3-border" type="number" placeholder="Month" oninput="timeConverter(this.id,this.value)" onchange="timeConverter(this.id,this.value)">
+       </div>
+      </div>
+           <script>
+     function timeConverter(source,valNum) {
+       valNum = parseFloat(valNum);
+       var inputNanosecond = document.getElementById("inputNanosecond");
+       var inputMicrosecond = document.getElementById("inputMicrosecond");
+       var inputMilisecond = document.getElementById("inputMilisecond");
+       var inputSecond = document.getElementById("inputSecond");
+       var inputMinute = document.getElementById("inputMinute");
+       var inputHour = document.getElementById("inputHour");
+       var inputDay = document.getElementById("inputDay");
+       var inputWeek = document.getElementById("inputWeek");
+       var inputMonth = document.getElementById("inputMonth");
+       if (source=="inputNanosecond") {
+         inputMicrosecond.value=(valNum/1000).toFixed(3);
+         inputMilisecond.value=(valNum/1e+6).toFixed(3);
+         inputSecond.value=(valNum/1e+9).toFixed(3);
+         inputMinute.value=(valNum/6e+10).toFixed(3);
+         inputHour.value=(valNum/3.6e+12).toFixed(3); 
+         inputDay.value=(valNum/8.64e+13).toFixed(3); 
+         inputWeek.value=(valNum/6.048e+14).toFixed(3); 
+         inputMonth.value=(valNum/2.628e+15).toFixed(3);    
+       }
+       if (source=="inputMicrosecond") {
+         inputNanosecond.value=(valNum*1000).toFixed(3);
+         inputMilisecond.value=(valNum/1000).toFixed(3);
+         inputSecond.value=(valNum/1e+6).toFixed(3);
+         inputMinute.value=(valNum/6e+7).toFixed(3);
+         inputHour.value=(valNum/3.6e+9).toFixed(3); 
+         inputDay.value=(valNum/8.64e+10).toFixed(3); 
+         inputWeek.value=(valNum/6.048e+11).toFixed(3); 
+         inputMonth.value=(valNum/2.628e+12).toFixed(3);  
+       }
+       if (source=="inputMilisecond") {
+         inputNanosecond.value=(valNum*1e+6).toFixed(3);
+         inputMicrosecond.value=(valNum*1000).toFixed(3);
+         inputSecond.value=(valNum/1000).toFixed(3);
+         inputMinute.value=(valNum/60000).toFixed(3);
+         inputHour.value=(valNum/3.6e+6).toFixed(3); 
+         inputDay.value=(valNum/8.64e+7).toFixed(3); 
+         inputWeek.value=(valNum/6.048e+8).toFixed(3); 
+         inputMonth.value=(valNum/2.628e+9).toFixed(3);  
+       }
+       if (source=="inputSecond") {
+         inputNanosecond.value=(valNum*1e+9).toFixed(3);
+         inputMicrosecond.value=(valNum*1e+6).toFixed(3);
+         inputMilisecond.value=(valNum*1000).toFixed(3);
+         inputMinute.value=(valNum/60).toFixed(7);
+         inputHour.value=(valNum/3600).toFixed(9); 
+         inputDay.value=(valNum/86400).toFixed(3); 
+         inputWeek.value=(valNum/604800).toFixed(3); 
+         inputMonth.value=(valNum/2.628e+6).toFixed(3);   
+       }
+       if (source=="inputMinute") {
+         inputNanosecond.value=(valNum*6e+10).toFixed(3);
+         inputMicrosecond.value=(valNum*6e+7).toFixed(3);
+         inputMilisecond.value=(valNum*60000).toFixed(3);
+         inputSecond.value=(valNum*60).toFixed();
+         inputHour.value=(valNum/60).toFixed(7); 
+         inputDay.value=(valNum/1440).toFixed(9); 
+         inputWeek.value=(valNum/10080).toFixed(3); 
+         inputMonth.value=(valNum/43800).toFixed(3);  
+       }
+       if (source=="inputHour") {
+         inputNanosecond.value=(valNum*3.6e+12).toFixed(3);
+         inputMicrosecond.value=(valNum*3.6e+9).toFixed(3);
+         inputMilisecond.value=(valNum*3.6e+6).toFixed(3);
+         inputSecond.value=(valNum*3600).toFixed();
+         inputMinute.value=(valNum*60).toFixed(); 
+         inputDay.value=(valNum/24).toFixed(7); 
+         inputWeek.value=(valNum/168).toFixed(8); 
+         inputMonth.value=(valNum/730).toFixed(8);  
+       }
+       if (source=="inputDay") {
+         inputNanosecond.value=(valNum*8.64e+13).toFixed(3);
+         inputMicrosecond.value=(valNum*8.64e+10).toFixed(3);
+         inputMilisecond.value=(valNum*8.64e+7).toFixed(3);
+         inputSecond.value=(valNum*86400).toFixed();
+         inputMinute.value=(valNum*1440).toFixed(); 
+         inputHour.value=(valNum*24).toFixed(); 
+         inputWeek.value=(valNum/7).toFixed(6); 
+         inputMonth.value=(valNum/30.417).toFixed(7);  
+       }
+       if (source=="inputWeek") {
+         inputNanosecond.value=(valNum*6.048e+14).toFixed(3);
+         inputMicrosecond.value=(valNum*6.048e+11).toFixed(3);
+         inputMilisecond.value=(valNum*6.048e+8).toFixed(3);
+         inputSecond.value=(valNum*604800).toFixed();
+         inputMinute.value=(valNum*10080).toFixed(); 
+         inputHour.value=(valNum*168).toFixed(); 
+         inputDay.value=(valNum*7).toFixed(); 
+         inputMonth.value=(valNum/4.345).toFixed(6);  
+       }
+       if (source=="inputMonth") {
+         inputNanosecond.value=(valNum*2.628e+15).toFixed(3);
+         inputMicrosecond.value=(valNum*2.628e+12).toFixed(3);
+         inputMilisecond.value=(valNum*2.628e+9).toFixed(3);
+         inputSecond.value=(valNum*2.628e+6).toFixed(3);
+         inputMinute.value=(valNum*43800).toFixed(); 
+         inputHour.value=(valNum*730).toFixed(); 
+         inputDay.value=(valNum*30.417).toFixed(3); 
+         inputWeek.value=(valNum*4.345).toFixed(5);  
+       }
+     }
+     </script>
+</div>
+<script>
+
+    var menuList = document.getElementById("menuList");
+    
+    menuList.style.maxHeight = "0px";
+
+    function togglemenu(){
+    
+        if(menuList.style.maxHeight == "0px")
+        {
+          menuList.style.maxHeight = "190px";
+        }
+        else
+        {
+            menuList.style.maxHeight = "0px";
+        }
+    }
+
+</script>
+</body>
+</html>
